@@ -32,6 +32,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
   Route::get('/laundries', [LaundryController::class, 'index'])->name('laundries.index');
+  Route::get('/laundries/{laundry}', [LaundryController::class, 'edit'])->name('laundries.edit');
+  Route::patch('/laundries/{laundry}', [LaundryController::class, 'update'])->name('laundries.update');
 
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
