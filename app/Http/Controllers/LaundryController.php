@@ -19,6 +19,16 @@ class LaundryController extends Controller
     ]);
   }
 
+  public function show(Laundry $laundry): Response
+  {
+    $laundry = $laundry->load('user');
+    // return $laundry;
+
+    return Inertia::render('Laundry/Show', [
+      'laundry' => $laundry
+    ]);
+  }
+
   public function edit(Laundry $laundry): Response
   {
     return Inertia::render('Laundry/Edit', [

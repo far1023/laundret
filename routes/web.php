@@ -30,6 +30,8 @@ Route::get('/dashboard', function () {
   return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/laundry-order/{laundry}', [LaundryController::class, 'show'])->name('laundries.show');
+
 Route::middleware('auth')->group(function () {
   Route::get('/laundries', [LaundryController::class, 'index'])->name('laundries.index');
   Route::get('/laundries/{laundry}', [LaundryController::class, 'edit'])->name('laundries.edit');
